@@ -63,3 +63,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'simple_form', '~> 4.1' #generate templating styles for forms using bootstrap 
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'jquery-rails'
+gem 'devise', '~> 4.6', '>= 4.6.1'
