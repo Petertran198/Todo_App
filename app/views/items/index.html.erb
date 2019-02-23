@@ -1,0 +1,8 @@
+<% @items.each do |i|%>
+ <h2> <%= link_to i.title, item_path(i)%> </h2>
+  <p><%= i.description %> <small><%= distance_of_time_in_words(i.created_at, Time.now) %> ago</small></p>
+
+
+
+<% end %>
+<%= link_to "Create a new item", new_item_path%>
