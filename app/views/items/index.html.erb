@@ -1,8 +1,27 @@
 <% if user_signed_in? %>
     <% @items.each do |i|%>
-     <h2> <%= link_to i.title, item_path(i)%> </h2>
-      <p><%= i.description %> <small><%= distance_of_time_in_words(i.created_at, Time.now) %> ago</small></p>
+    <% if i.completed? %>
+       <h2 style = "opacity: 0.5%;"><strike> <%= link_to i.title, item_path(i)%> </strike></h2>
+        <p><%= i.description %></p>
+        <p>Completed <%= distance_of_time_in_words(i.created_at, Time.current) %> ago</p>
+        <%= link_to complete_item_path(i), method: :patch do %> 
+              <i class="fa fa-lg fa-check"></i>
+        <% end %>
+        <%= link_to item_path(i), method: :delete, data: {confirm: "Are you Sure?"} do %>
+          <i class="fa fa-lg fa-trash"></i>
+        <% end %>
 
+     <% else %>
+       <h2><%= link_to i.title, item_path(i)%> </h2>
+        <p><%= i.description %> <small><%= distance_of_time_in_words(i.created_at, Time.current) %> ago</small></p>
+        <%= link_to complete_item_path(i), method: :patch do %> 
+              <i class="fa fa-lg fa-check"></i>
+        <% end %>
+        <%= link_to item_path(i), method: :delete, data: {confirm: "Are you Sure?"} do %>
+              <i class="fa fa-lg fa-trash"></i>
+        <% end %>
+     
+     <% end %>   
 
 
     <% end %>

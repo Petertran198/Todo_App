@@ -64,3 +64,5 @@ gem 'simple_form', '~> 4.1' #generate templating styles for forms using bootstra
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'jquery-rails'
 gem 'devise', '~> 4.6', '>= 4.6.1'
+gem "font-awesome-rails"
+
