@@ -1,32 +1,38 @@
-<% if user_signed_in? %>
-    <% @items.each do |i|%>
-    <% if i.completed? %>
-       <h2 style = "opacity: 0.5%;"><strike> <%= link_to i.title, item_path(i)%> </strike></h2>
-        <p><%= i.description %></p>
-        <p>Completed <%= distance_of_time_in_words(i.created_at, Time.current) %> ago</p>
-        <%= link_to complete_item_path(i), method: :patch do %> 
-              <i class="fa fa-lg fa-check"></i>
-        <% end %>
-        <%= link_to item_path(i), method: :delete, data: {confirm: "Are you Sure?"} do %>
-          <i class="fa fa-lg fa-trash"></i>
-        <% end %>
+<div class="opacity">
+<center><div class="jumbotron">
+  <% if user_signed_in? %>
+      <% @items.each do |i|%>
+      <% if i.completed? %>
 
-     <% else %>
-       <h2><%= link_to i.title, item_path(i)%> </h2>
-        <p><%= i.description %> <small><%= distance_of_time_in_words(i.created_at, Time.current) %> ago</small></p>
-        <%= link_to complete_item_path(i), method: :patch do %> 
-              <i class="fa fa-lg fa-check"></i>
-        <% end %>
-        <%= link_to item_path(i), method: :delete, data: {confirm: "Are you Sure?"} do %>
-              <i class="fa fa-lg fa-trash"></i>
-        <% end %>
-     
-     <% end %>   
+         <h2 style = "opacity: 0.5%;"><strike> <%= link_to i.title, item_path(i)%> </strike></h2>
+          <p><%= i.description %></p>
+          <small>Completed: <%= distance_of_time_in_words(i.created_at, Time.current) %> ago</small>
+          <%= link_to complete_item_path(i), method: :patch do %> 
+                <i class="fa fa-lg fa-check"></i>|
+          <% end %>
+          <%= link_to item_path(i), method: :delete, data: {confirm: "Are you Sure?"} do %>
+            <i class="fa fa-lg fa-trash"></i>
+          <% end %>
+    
+
+       <% else %>
+         <h2><%= link_to i.title, item_path(i)%> </h2>
+          <p><%= i.description %> <small>-<%= distance_of_time_in_words(i.created_at, Time.current) %> ago</small></p>
+          <%= link_to complete_item_path(i), method: :patch do %> 
+                <i class="fa fa-lg fa-check"></i> |
+          <% end %>
+          <%= link_to item_path(i), method: :delete, data: {confirm: "Are you Sure?"} do %>
+                <i class="fa fa-lg fa-trash"></i>
+          <% end %>
+       
+       <% end %>   
 
 
-    <% end %>
-    <%= link_to "Create a new item", new_item_path%>
-<% else %>
-    <%= render 'layouts/static_home' %>
-<% end %>  
+      <% end %>
 
+  <% else %>
+      <%= render 'layouts/static_home' %>
+  <% end %>  
+</div>
+</center>
+</div>

@@ -65,4 +65,4 @@ gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'jquery-rails'
 gem 'devise', '~> 4.6', '>= 4.6.1'
 gem "font-awesome-rails"
-
+gem 'tran_view_tool', git: 'https://github.com/Petertran198/tran_view_tool'
